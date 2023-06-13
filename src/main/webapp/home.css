@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+}
+
+.java{
+    display: none;
+}
+
+.home-nav{
+    display:flex;
+    justify-content: space-between;
+    margin: 20px 50px;
+}
+
+#search-key{
+    padding: 5px;
+    border-radius: 8rem;
+}
+
+.home-nav a{
+    text-decoration: none;
+}

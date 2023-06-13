@@ -1,0 +1,11 @@
+.main-container{
+    width: 50%;
+    margin: auto;
+    background-color: aquamarine;
+}
+
+.main-container a{
+    left: 45%;
+    position: relative;
+    text-decoration: none;
+}

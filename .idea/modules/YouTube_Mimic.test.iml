@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="AppEngineStandardGradleModuleComponent">
+    <option name="hasAppGradlePlugin" value="true" />
+    <option name="gradleBuildDir" value="E:\WorkSpace\Accioproject\YouTube_Mimic\build" />
+    <option name="gradleModuleDir" value="E:\WorkSpace\Accioproject\YouTube_Mimic" />
+    <option name="webAppDir" value="src/main/webapp" />
+  </component>
+</module>

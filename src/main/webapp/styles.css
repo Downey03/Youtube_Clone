@@ -1,0 +1,147 @@
+*{
+    margin: 0;
+}
+
+.java{
+    display: none;
+}
+
+.index-container,.login-container,.signup-container{
+    padding: 100px;
+    position: relative;
+}
+.index-container>.main-container,.login-container>.main-container,.signup-container>.main-container{
+    width: 50%;
+    margin: auto;
+    position: relative;
+    padding: 50px;
+    padding-top: 25px;
+    background-color:rgb(74, 74, 74);
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(66, 66, 66,0.6);
+}
+
+.main-content{
+    display: block;
+}
+
+
+
+.yt-icon{
+   display: block;
+   margin: auto;
+   background-color: white;
+   width: 50%;
+}
+
+.index-container>.main-container>.main-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.index-container>.main-container>.main-content>a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: white;
+    margin-top: 15px;
+    height: 30px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+
+button{
+    width: 75%;
+    display: block;
+    margin: auto;
+    border-radius: 7px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 10px;
+}
+
+.login-content{
+   
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+.login-table{
+    
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+
+.login-table input:not(submit){
+    padding: 5px 10px;
+    width: 100%;
+    border-radius: 7px;
+}
+
+.login-table input[type="submit"]{
+    
+}
+
+.login-table td{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.hr-content{
+    display: flex;
+    margin-top: 5px;
+    align-items: baseline;
+    justify-content: space-around;
+}
+
+hr{
+    width: 35%;   
+}
+
+.login-content>#my-signin2{
+    width: 50%;
+    
+    margin-top: 15px;
+    margin-left: 30%;
+   
+}
+
+.back>a{
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.left-arrow{
+    width: 3%;
+}
+
+.signup-form{
+    position: relative;
+    top: 20px;
+    width: 50%;
+    margin: auto;
+}
+
+.signup-form input:not(input[type='submit']){
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 25px;
+    border-radius: 8rem;
+}
+
+
+.signup-form input[type='submit']{
+    width: 50%;
+    margin:10px 28%;
+    height: 25px;
+    border-radius: 8rem;
+
+}

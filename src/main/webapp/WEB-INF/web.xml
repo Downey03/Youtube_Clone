@@ -1,0 +1,128 @@
+
+<web-app  xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+          version="4.0">
+    <!--    <display-name>Archetype Created Web Application</display-name>-->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>SignUpController</servlet-name>
+        <servlet-class>Controller.SignUpController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignUpController</servlet-name>
+        <url-pattern>/SignUp</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>Controller.LoginController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutController</servlet-name>
+        <servlet-class>Controller.LogoutController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutController</servlet-name>
+        <url-pattern>/LogoutController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GoHomeController</servlet-name>
+        <servlet-class>Controller.GoHomeController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GoHomeController</servlet-name>
+        <url-pattern>/GoHomeController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateNewPlayListController</servlet-name>
+        <servlet-class>Controller.CreateNewPlayListController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateNewPlayListController</servlet-name>
+        <url-pattern>/CreateNewPlayListController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeletePlayListController</servlet-name>
+        <servlet-class>Controller.DeletePlayListController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePlayListController</servlet-name>
+        <url-pattern>/DeletePlayListController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreatePlayListAndAddVideoController</servlet-name>
+        <servlet-class>Controller.CreatePlayListAndAddVideoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreatePlayListAndAddVideoController</servlet-name>
+        <url-pattern>/CreatePlayListAndAddVideoController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddToPlayListController</servlet-name>
+        <servlet-class>Controller.AddToPlayListController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddToPlayListController</servlet-name>
+        <url-pattern>/AddToPlayListController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetAndAddToPlayListController</servlet-name>
+        <servlet-class>Controller.GetAndAddToPlayListController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAndAddToPlayListController</servlet-name>
+        <url-pattern>/GetAndAddToPlayListController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ShowPlayListItemsController</servlet-name>
+        <servlet-class>Controller.ShowPlayListItemsController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ShowPlayListItemsController</servlet-name>
+        <url-pattern>/ShowPlayListItemsController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteVideoFromPlayList</servlet-name>
+        <servlet-class>Controller.DeleteVideoFromPlayList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteVideoFromPlayList</servlet-name>
+        <url-pattern>/DeleteVideoFromPlayList</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProfileController</servlet-name>
+        <servlet-class>Controller.ProfileController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfileController</servlet-name>
+        <url-pattern>/ProfileController</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>Controller.SearchController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/SearchController</url-pattern>
+    </servlet-mapping>
+
+</web-app>

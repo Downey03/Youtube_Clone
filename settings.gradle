@@ -1,0 +1,7 @@
+rootProject.name = 'YouTube_Mimic'
+include 'main'
+include 'main'
+include 'main'
+include 'demo'
+include 'demo'
+
