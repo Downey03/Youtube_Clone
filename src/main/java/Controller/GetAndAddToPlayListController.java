@@ -23,7 +23,7 @@ public class GetAndAddToPlayListController extends HttpServlet {
     }
 
     protected void getPlaylist(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException {
-        req.setCharacterEncoding("UTF-8");
+
         String userEmail = req.getParameter("userEmail");
         String videoTitle = req.getParameter("videoTitle");
         req.setAttribute("userEmail",userEmail);

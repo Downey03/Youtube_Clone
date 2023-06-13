@@ -15,7 +15,7 @@ public interface ServiceInterface {
 
     UserDTO verifyCredentials(String mail, String password) throws Exception;
 
-    UserDTO createUser(String name, String mail, String password) throws Exception;
+    UserDTO createUser(String name, String userEmail, String password) throws Exception;
 
     ArrayList<String> getPlayLists(String userEmail) ;
 

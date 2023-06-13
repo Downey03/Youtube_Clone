@@ -20,8 +20,7 @@ public class GoHomeController extends HttpServlet {
     }
 
     protected void getList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userEmail = (String) req.getAttribute("userEmail");
-        if(userEmail==null) req.getParameter("userEmail");
+        String userEmail = req.getParameter("userEmail");
         req.setAttribute("userEmail",userEmail);
         req.setAttribute("videoList",serviceInstance.getVideoList());
         req.setAttribute("playLists",serviceInstance.getPlayLists(userEmail));

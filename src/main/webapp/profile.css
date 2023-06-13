@@ -1,0 +1,94 @@
+.profile-nav{
+    display:flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    background-color: #FF0000;
+}
+
+#home{
+    width: 120%;
+    height: 30px;
+    font-weight: 500;
+    font-size: 16;
+    border: transparent;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+#home:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(77,77,77);
+}
+
+.playlist-container{
+    background-color: rgb(77,77,77);
+    height: 100vh;
+    padding: 20px;
+}
+
+.main-container{
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    background-color:azure;
+    border-radius: 10px;
+}
+
+h3{
+    margin-bottom: 10px;
+}
+
+table{
+    text-align: center;
+}
+
+#playlist-name{
+    border: none;
+    background-color: transparent;
+    border-radius: 3px;
+}
+
+#playlist-name:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(77,77,77);
+}
+
+
+table button{
+    border-radius: 4px;
+    border: 0.2px solid black;
+}
+
+table button:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(77,77,77);
+}
+
+hr{
+    margin: 25px 0px;
+}
+
+#new-playlist{
+    border-radius: 5px;
+    border: 0.2px solid black;
+}
+
+#new-playlist:focus,#new-playlist:hover{
+    transition: 0.2s;
+    background-color: rgb(216, 216, 216);
+    outline: none;
+}
+
+.new-playlist input[type="submit"]{
+    border-radius: 5px;
+    border: 0.2px solid black;
+}
+
+.new-playlist input[type="submit"]:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(77,77,77);
+}

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 
 //When the user clicks add to playlist and click on existing playlist this servlet will be called
 //This controller will add video to playlist from the playlist jsp page
@@ -21,10 +22,7 @@ public class AddToPlayListController extends HttpServlet {
         String userEmail = req.getParameter("userEmail");
         req.setAttribute("userEmail",userEmail);
         serviceInstance.addVideoToPlaylist(playListName,videoTitle,userEmail);
-        req.setAttribute("playList",serviceInstance.getPlayLists(userEmail));
-
-        req.getRequestDispatcher("home.jsp").forward(req,resp);
-        //   req.getRequestDispatcher("GoHomeController").forward(req,resp);
+        req.getRequestDispatcher("GoHomeController").forward(req,resp);
     }
 
     @Override

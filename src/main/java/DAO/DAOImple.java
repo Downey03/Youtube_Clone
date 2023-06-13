@@ -11,18 +11,24 @@ import java.util.List;
 public class DAOImple implements DAOinterface{
 
 
+    //Get datastore connection
     private static final Datastore datastore = DatastoreOptions.newBuilder().setProjectId("sound-groove-380715")
             .build().getService();
 
 
-//    private static final Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    //private static final Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+
+    //generate user key by passing string(ID)
     private static Key getUserKey(String userEmail){
        return datastore.newKeyFactory().setKind("user").newKey(userEmail);
     }
 
+    //generate video key by passing string(ID)
     private static Key getVideoKey(String videoTitle){
         return datastore.newKeyFactory().setKind("YTLink").newKey(videoTitle);
     }
+
+    //generate playlist key by passing string(ID)
     private static Key getPlayListKey(String playlistName,String userMail,Key userKey){
         return datastore.newKeyFactory()
                 .addAncestors(PathElement.of("user",userMail))
@@ -58,20 +64,22 @@ public class DAOImple implements DAOinterface{
     }
 
     @Override
-    public UserDTO createUser(String name, String mail, String password) throws Exception {
-        //checks if the mail has already been used
+    public UserDTO createUser(String name, String userEmail, String password) throws Exception {
+
+        //checks if the mail already exists
         Query<Entity> query = Query.newEntityQueryBuilder()
                     .setKind("user")
-                     .setFilter(StructuredQuery.PropertyFilter.eq("mail",mail))
+                    .setFilter(StructuredQuery.PropertyFilter.eq("mail",userEmail))
                     .build();
-
         QueryResults<Entity> results= datastore.run(query);
-        //if it is used throw exception
+
+        //if the mail exists
         if(results.hasNext()) throw new Exception("User Already Found");
+
         //else create a new user
-        Entity entity = Entity.newBuilder(getUserKey(mail))
+        Entity entity = Entity.newBuilder(getUserKey(userEmail))
                 .set("name",name)
-                .set("mail",mail)
+                .set("mail",userEmail)
                 .set("password",password)
                 .build();
         datastore.put(entity);
@@ -85,30 +93,41 @@ public class DAOImple implements DAOinterface{
         results = datastore.run(query);
         ArrayList<VideoDTO> videoDTOList = DTOUtilities.videoListFromResult(results);
 
+        //return the user
         return DTOUtilities.entitytoUserDto(entity,videoDTOList);
     }
 
     @Override
     public ArrayList<String> getPlayLists(String userEmail) {
+
+        //get the userKey
         Key key = getUserKey(userEmail);
+
+        //search playlists which owned by the user
         Query<Entity> query = Query.newEntityQueryBuilder()
                 .setKind("playlist")
                 .setFilter(StructuredQuery.PropertyFilter.hasAncestor(key))
                 .build();
         QueryResults<Entity> results = datastore.run(query);
 
+        //build list of string(playlist name)
         ArrayList<String> playlistDTOSList = new ArrayList<>();
         while (results.hasNext()){
             Entity entity = results.next();
             playlistDTOSList.add(entity.getString("name"));
         }
 
+        //return the list
         return playlistDTOSList;
     }
 
     @Override
     public void createPlaylist(String playlistName,String userEmail) throws Exception {
+
+        //get the userKey
         Key userKey = getUserKey(userEmail);
+
+        //Check if the user already have a playlist with the same name (playlistName)
         StructuredQuery<Entity> query = Query.newEntityQueryBuilder()
                 .setKind("playlist")
                 .setFilter(StructuredQuery.CompositeFilter.and(StructuredQuery.PropertyFilter.eq("name",playlistName)
@@ -116,6 +135,7 @@ public class DAOImple implements DAOinterface{
                 .build();
         QueryResults<Entity> results = datastore.run(query);
 
+        //if he have a playlist throw exception
         if(results.hasNext()) throw new Exception("Already a PlayList Found With the Same Name");
 
         ListValue.Builder listBuilder = ListValue.newBuilder();
@@ -124,9 +144,7 @@ public class DAOImple implements DAOinterface{
         Entity entity = Entity.newBuilder(key)
                 .set("id",playlistName+userEmail)
                 .set("name",playlistName)
-                .set("videoList",listBuilder.addValue("Charlie Puth - Cheating on You"
-                        ,"Charlie Puth - Dangerously"
-                        ,"Charlie Puth - Dangerously").build())
+                .set("videoList",listBuilder.build())
                 .build();
 
         datastore.put(entity);

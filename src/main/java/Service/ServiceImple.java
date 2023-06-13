@@ -23,10 +23,10 @@ public class ServiceImple implements ServiceInterface{
     }
 
     @Override
-    public UserDTO createUser(String name, String mail, String password) throws Exception {
+    public UserDTO createUser(String name, String userEmail, String password) throws Exception {
         UserDTO userDTO;
         try{
-           userDTO =  daoInstance.createUser(name,mail,password);
+           userDTO =  daoInstance.createUser(name,userEmail,password);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }

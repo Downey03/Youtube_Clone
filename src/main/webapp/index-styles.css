@@ -1,10 +1,4 @@
-*{
-    margin: 0;
-}
 
-.java{
-    display: none;
-}
 
 .index-container,.login-container,.signup-container{
     padding: 100px;
@@ -27,12 +21,19 @@
 
 
 
-.yt-icon{
+.external-icon{
    display: block;
    margin: auto;
-   background-color: white;
    width: 50%;
+   margin-bottom: 20px;
 }
+
+a{
+    color: rgb(74, 74, 74);
+    font-weight: 600;
+}
+
+
 
 .index-container>.main-container>.main-content{
     display: flex;
@@ -62,6 +63,26 @@ button{
     padding: 10px;
 }
 
+#login-btn,#signup-btn{
+    border: 2px transparent solid;
+}
+
+#login-btn:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(127, 127, 127);
+    border: solid black 2px;
+}
+
+#signup-btn:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(127,127,127);
+    border: solid black 2px;
+}
+
+
+
 .login-content{
    
     width: 100%;
@@ -85,8 +106,16 @@ button{
 }
 
 .login-table input[type="submit"]{
-    
+    border: 2px transparent solid;
 }
+
+.login-table input[type="submit"]:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(127,127,127);
+    border: solid black 2px;
+}
+
 
 .login-table td{
     padding-left: 25px;
@@ -95,7 +124,7 @@ button{
 
 .hr-content{
     display: flex;
-    margin-top: 5px;
+    margin-top: 15px;
     align-items: baseline;
     justify-content: space-around;
 }
@@ -104,7 +133,8 @@ hr{
     width: 35%;   
 }
 
-.login-content>#my-signin2{
+.login-container #my-signin2,.signup-container #my-signin2{
+   
     width: 50%;
     
     margin-top: 15px;
@@ -141,7 +171,26 @@ hr{
 .signup-form input[type='submit']{
     width: 50%;
     margin:10px 28%;
-    height: 25px;
+    height: 30px;
     border-radius: 8rem;
+    margin-bottom: 10px;
+    border: 2px transparent solid;
+}
 
+
+.signup-form input[type='submit']:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(127,127,127);
+    border: solid black 2px;
+}
+
+#password-toggle{
+    position: absolute;
+    width: 50px;
+    height: 20px;
+    right: 0px;
+    bottom: 60px;
+    border: transparent ;
+    background-color: transparent;
 }
