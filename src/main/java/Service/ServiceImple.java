@@ -1,6 +1,6 @@
 package Service;
 
-import DAO.DAOImple;
+import DAO.DAOImpleObjectify;
 import DAO.DAOinterface;
 import DTO.UserDTO;
 import DTO.VideoDTO;
@@ -9,28 +9,27 @@ import java.util.ArrayList;
 
 public class ServiceImple implements ServiceInterface{
 
-    private static final DAOinterface daoInstance = new DAOImple();
+    private static final DAOinterface daoInstance = new DAOImpleObjectify();
 
     @Override
-    public UserDTO verifyCredentials(String mail, String password) throws Exception {
-        UserDTO userDTO;
+    public void verifyCredentials(String mail, String password) throws Exception {
+
         try {
-            userDTO = daoInstance.verifyCredentials(mail,password);
+             daoInstance.verifyCredentials(mail,password);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
-        return userDTO;
+
     }
 
     @Override
-    public UserDTO createUser(String name, String mail, String password) throws Exception {
-        UserDTO userDTO;
+    public void createUser(String name, String userEmail, String password) throws Exception {
+
         try{
-           userDTO =  daoInstance.createUser(name,mail,password);
+            daoInstance.createUser(name,userEmail,password);
         }catch (Exception e){
             throw new Exception(e.getMessage());
         }
-        return userDTO;
     }
 
     @Override
@@ -46,7 +45,7 @@ public class ServiceImple implements ServiceInterface{
     }
 
     @Override
-    public void addVideoToPlaylist(String playListName, String videoTitle, String userEmail) {
+    public void addVideoToPlaylist(String playListName, String videoTitle, String userEmail) throws Exception {
         daoInstance.addVideoToPlayList(playListName,videoTitle,userEmail);
     }
 

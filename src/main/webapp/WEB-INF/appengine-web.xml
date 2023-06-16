@@ -4,9 +4,13 @@
     <!--    <public-root>/app-engine</public-root>-->
     <sessions-enabled>true</sessions-enabled>
 
-    <system-properties>
-        <property name="appengine.contextPath" value="/karthick"/>
-    </system-properties>
+<!--    <system-properties>-->
+<!--        <property name="appengine.contextPath" value="/karthick"/>-->
+<!--    </system-properties>-->
+
+    <application>internship-full</application>
+
+<!--    <service-account>karthick@sound-groove-380715.iam.gserviceaccount.com</service-account>-->
 
     <runtime>java8</runtime>
 

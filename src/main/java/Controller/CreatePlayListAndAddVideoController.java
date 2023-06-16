@@ -21,13 +21,21 @@ public class CreatePlayListAndAddVideoController extends HttpServlet {
     }
 
     protected void createPlaylist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get input
         String userEmail = req.getParameter("userEmail");
         String playlistName = req.getParameter("playListName");
         String videoTitle = req.getParameter("videoTitle");
+
+        //set attribute
         req.setAttribute("userEmail",userEmail);
+
+        //try to create playlist and add the video to that playlist,
+        //throws exception if duplicate playlist is found
         try{
             serviceInstance.createPlaylist(playlistName,userEmail);
             serviceInstance.addVideoToPlaylist(playlistName,videoTitle,userEmail);
+            //on successful creation and addition goes to profile
             req.getRequestDispatcher("ProfileController").forward(req,resp);
         }catch (Exception e){
             req.setAttribute("msg",e.getMessage());

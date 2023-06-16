@@ -16,12 +16,17 @@ public class ShowPlayListItemsController extends HttpServlet {
     private final ServiceInterface serviceInstance = new ServiceImple();
 
     protected void getPlayListItems(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
+
+        //get input
         String userEmail = req.getParameter("userEmail");
         String playListName =  req.getParameter("playListName");
+
+        //set attribute
         req.setAttribute("userEmail",userEmail);
         req.setAttribute("playListName",playListName);
         req.setAttribute("playListItems",serviceInstance.getPlayListItems(userEmail,playListName));
+
+        //goes to playlist items
         req.getRequestDispatcher("playlist-items.jsp").forward(req,resp);
     }
 

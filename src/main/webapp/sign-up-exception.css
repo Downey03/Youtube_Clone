@@ -1,0 +1,40 @@
+.exception-container{
+    padding: 50px;
+}
+
+.exception-container>.main-container{
+    width: 50%;
+    margin: auto;
+    position: relative;
+    padding: 50px;
+    padding-top: 25px;
+    background-color:rgb(74, 74, 74);
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(66, 66, 66,0.6);
+}
+
+.main-content{
+    display: block;
+}
+
+.back a{
+    background-color:white;
+    padding: 1px 5px;
+    color:black;
+    border-radius: 8px;
+    border: 2px transparent solid;
+    text-decoration: none;
+}
+
+.back a:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(127,127,127);
+    border: solid black 2px;
+}
+
+h6{
+    margin-top:40px;
+    font-size: 20px;
+    text-align:center;
+}

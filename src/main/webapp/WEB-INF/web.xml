@@ -14,7 +14,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>SignUpController</servlet-name>
-        <url-pattern>/SignUp</url-pattern>
+        <url-pattern>/SignUpController</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -125,4 +125,34 @@
         <url-pattern>/SearchController</url-pattern>
     </servlet-mapping>
 
+<!--    <servlet>-->
+<!--        <servlet-name>SaveTYLink</servlet-name>-->
+<!--        <servlet-class>Controller.SaveYTLink</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>SaveYTLink</servlet-name>-->
+<!--        <url-pattern>/SaveYTLink</url-pattern>-->
+<!--    </servlet-mapping>-->
+
+
+
+
+
+
+
+<!--    <filter>-->
+<!--        <filter-name>FilterName</filter-name>-->
+<!--        <filter-class>Controller.FilterName</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>FilterName</filter-name>-->
+<!--    </filter-mapping>-->
+
+<!--    <filter>-->
+<!--        <filter-name>SearchFilter</filter-name>-->
+<!--        <filter-class>Controller.SearchFilter</filter-class>-->
+<!--    </filter>-->
+<!--    <filter-mapping>-->
+<!--        <filter-name>SearchFilter</filter-name>-->
+<!--    </filter-mapping>-->
 </web-app>

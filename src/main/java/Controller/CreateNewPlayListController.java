@@ -21,11 +21,18 @@ public class CreateNewPlayListController extends HttpServlet {
     }
 
     protected void createPlaylist(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get inputs
         String userEmail = req.getParameter("userEmail");
         String playlistName = req.getParameter("playListName");
+
+        //sets attribute
         req.setAttribute("userEmail",userEmail);
+
+        //try to create a playlist, if same name is already found throws exception
         try{
             serviceInstance.createPlaylist(playlistName,userEmail);
+            //on successful creation goes to profile
             req.getRequestDispatcher("ProfileController").forward(req,resp);
         }catch (Exception e){
             req.setAttribute("msg",e.getMessage());

@@ -21,10 +21,16 @@ public class SearchController extends HttpServlet {
 
 
     protected void searchItems(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get input
         String userEmail = req.getParameter("userEmail");
         String searchKeyword = req.getParameter("searchKeyword");
+
+        //set attribute
         req.setAttribute("userEmail",userEmail);
         req.setAttribute("videoList",serviceInstance.getVideoList(searchKeyword));
+
+        //goes to home
         req.getRequestDispatcher("/home.jsp").forward(req,resp);
     }
 
