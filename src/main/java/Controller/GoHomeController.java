@@ -1,5 +1,6 @@
 package Controller;
 
+import DTO.VideoDTO;
 import Service.ServiceImple;
 import Service.ServiceInterface;
 
@@ -20,10 +21,17 @@ public class GoHomeController extends HttpServlet {
     }
 
     protected void getList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String userEmail = req.getParameter("userEmail");
+
+        //get input
+        String userEmail = (String) req.getAttribute("userEmail");
+        if(userEmail == null || userEmail.equals("")) userEmail = req.getParameter("userEmail");
+
+        //set attribute
         req.setAttribute("userEmail",userEmail);
         req.setAttribute("videoList",serviceInstance.getVideoList());
         req.setAttribute("playLists",serviceInstance.getPlayLists(userEmail));
+
+        //goes to home
         req.getRequestDispatcher("/home.jsp").forward(req,resp);
     }
 

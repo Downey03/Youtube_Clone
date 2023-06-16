@@ -16,13 +16,28 @@ public class AddToPlayListController extends HttpServlet {
 
     private static final ServiceInterface serviceInstance = new ServiceImple();
 
-    protected void addVideoToPlayList(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException{
+    protected void addVideoToPlayList(HttpServletRequest req, HttpServletResponse resp) throws ServletException , IOException{
+
+        //get the inputs
         String playListName = req.getParameter("playListName");
         String videoTitle = req.getParameter("videoTitle");
         String userEmail = req.getParameter("userEmail");
+
+        //set attribute
         req.setAttribute("userEmail",userEmail);
-        serviceInstance.addVideoToPlaylist(playListName,videoTitle,userEmail);
-        req.getRequestDispatcher("GoHomeController").forward(req,resp);
+
+        //try to add song to a playlist if duplicate is found throws exception
+        try{
+            serviceInstance.addVideoToPlaylist(playListName,videoTitle,userEmail);
+            //on successful addition goes to home
+            req.getRequestDispatcher("GoHomeController").forward(req,resp);
+        }catch(Exception e){
+            req.setAttribute("msg",e.getMessage());
+            req.getRequestDispatcher("exception.jsp").forward(req,resp);
+        }
+
+
+
     }
 
     @Override

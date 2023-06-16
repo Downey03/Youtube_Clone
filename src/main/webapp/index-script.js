@@ -1,7 +1,8 @@
-let showPass = document.getElementById("password-toggle")
-let password = document.getElementById("password")
+
 
 function togglePassword(){
+    let showPass = document.getElementById("password-toggle")
+    let password = document.getElementById("password")
     if(password.type=="password"){
         password.type="text"
         showPass.innerText = "hide"

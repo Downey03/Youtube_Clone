@@ -3,16 +3,31 @@ package DAO;
 import DTO.UserDTO;
 import DTO.VideoDTO;
 import Utilities.DTOUtilities;
+import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.datastore.*;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DAOImple implements DAOinterface{
 
+    private static GoogleCredentials getCredentials(){
+        try{
+           return GoogleCredentials.fromStream(new ByteArrayInputStream(System.getenv("552d30126d68b9af23ba1e6ea507215a5cf51427").getBytes()));
+        }catch(Exception e){
+            return null;
+        }
+    }
+
+
+
+
 
     //Get datastore connection
-    private static final Datastore datastore = DatastoreOptions.newBuilder().setProjectId("sound-groove-380715")
+    private static final Datastore datastore = DatastoreOptions.newBuilder()
+            .setProjectId("sound-groove-380715")
+    //            .setCredentials(getCredentials())
             .build().getService();
 
 
@@ -44,27 +59,24 @@ public class DAOImple implements DAOinterface{
 
 
     @Override
-    public UserDTO verifyCredentials(String userEmail, String password) throws Exception {
+    public void verifyCredentials(String userEmail, String password) throws Exception {
 
         //try to get the user from DB
         Key key = getUserKey(userEmail);
         Entity entity = datastore.get(key);
 
         //if no user found throw exception
-        if(entity==null) throw new Exception("User Not Found");
+        if(entity==null) throw new Exception("Invalid Email");
         //if the password is wrong throw exception
         if(!entity.getString("password").equals(password)) throw new Exception("Invalid password");
 
         //return the user entity
-        return UserDTO.builder()
-                .name(entity.getString("name"))
-                .email(entity.getString("mail"))
-                .password(entity.getString("password"))
-                .build();
+
     }
 
     @Override
-    public UserDTO createUser(String name, String userEmail, String password) throws Exception {
+    public void createUser(String name, String userEmail, String password) throws Exception {
+
 
         //checks if the mail already exists
         Query<Entity> query = Query.newEntityQueryBuilder()
@@ -75,6 +87,7 @@ public class DAOImple implements DAOinterface{
 
         //if the mail exists
         if(results.hasNext()) throw new Exception("User Already Found");
+
 
         //else create a new user
         Entity entity = Entity.newBuilder(getUserKey(userEmail))
@@ -93,8 +106,6 @@ public class DAOImple implements DAOinterface{
         results = datastore.run(query);
         ArrayList<VideoDTO> videoDTOList = DTOUtilities.videoListFromResult(results);
 
-        //return the user
-        return DTOUtilities.entitytoUserDto(entity,videoDTOList);
     }
 
     @Override

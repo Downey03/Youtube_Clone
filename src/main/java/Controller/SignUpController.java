@@ -2,6 +2,7 @@ package Controller;
 
 import DTO.UserDTO;
 import Service.ServiceInterface;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Slf4j
 public class SignUpController extends HttpServlet{
 
     private ServiceInterface serviceInstance;
@@ -21,18 +23,21 @@ public class SignUpController extends HttpServlet{
     }
 
     protected void doSignUpProcess(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get input
         String name = req.getParameter("name");
         String userEmail = req.getParameter("userEmail");
         String password = req.getParameter("password");
+
+        //try to signup, throws exception on duplicate userEmail
         try{
-            UserDTO user = serviceInstance.createUser(name,userEmail,password);
+            serviceInstance.createUser(name,userEmail,password);
             req.setAttribute("userEmail",userEmail);
-            req.getRequestDispatcher("GoHomeController");
-            req.setAttribute("videoList",user.getVideoDTOList());
-            req.getRequestDispatcher("home.jsp").forward(req,resp);
+            //on successful signup goes to home
+            req.getRequestDispatcher("GoHomeController").forward(req,resp);
         }catch (Exception e){
            req.setAttribute("msg",e.getMessage());
-           req.getRequestDispatcher("exception.jsp").forward(req,resp);
+           req.getRequestDispatcher("sign-up-exception.jsp").forward(req,resp);
         }
 
     }

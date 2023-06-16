@@ -12,10 +12,13 @@
     <link rel="stylesheet" href="global-styles.css">
 </head>
 <body>
-
+  <div class="java"><% String emailWarn = (String)request.getSession().getAttribute("emailWarn");
+     String passwordWarn = (String)request.getSession().getAttribute("passwordWarn");
+       System.out.println("\n\nEmail warn :"+emailWarn+" password warn : "+passwordWarn);
+     %> </div>
     <div class="login-container"><div class="main-container" id="main-container">
             <div class="back">
-                 <a href="./index.jsp"><img  src="../resources/images/left-arrow.png" class="left-arrow" alt=""><span>back</span></a>
+                 <a href="./index.jsp">Back</a>
             </div>
             <svg class="external-icon"  viewBox="0 0 90 20" focusable="false" style="pointer-events: none; display: block; width: 50%; height: 50%;">
                 <svg viewBox="0 0 90 20" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -37,6 +40,9 @@
                 </svg>
               </svg>
             <div class="login-content">
+              <div class="java"> <% if(emailWarn!=null){ %> </div>
+                      <h6 class="email-warn"><%=emailWarn%></h6>
+                   <div class="java">  <% } else { %> <div class="email-warn"></div> <% } %></div>
                 <form action=LoginController method="POST">
                     <table class="login-table">
                         <tr>
@@ -60,11 +66,16 @@
                         </tr>
                     </table>
                 </form>
-                <div>
-                    <div class="hr-content">
-                        <hr><span>OR</span><hr>
+                <div class="java"> <%if(passwordWarn!=null){%> </div>
+                    <h6 class="pass-warn" ><%=passwordWarn%></h6>
+                <div class="java">  <%}%>  </div>
+               <div class="java">
+                   <div>
+                        <div class="hr-content">
+                            <hr><span>OR</span><hr>
+                        </div>
+                        <div id="my-signin2"></div>
                     </div>
-                    <div id="my-signin2"></div>
                 </div>
             </div>
         </div>

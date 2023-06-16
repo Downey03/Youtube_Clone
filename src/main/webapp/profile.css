@@ -83,12 +83,13 @@ hr{
 }
 
 .new-playlist input[type="submit"]{
+    display:none;
     border-radius: 5px;
+    transition: all 0.2s;
     border: 0.2px solid black;
 }
 
 .new-playlist input[type="submit"]:hover{
-    transition: 0.2s;
     color: azure;
     background-color: rgb(77,77,77);
 }

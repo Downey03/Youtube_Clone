@@ -6,16 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>error</title>
     <link rel="stylesheet" href="exception.css">
+    <link rel="stylesheet" href="global-styles.css">
 </head>
 <body>
+    <% String msg = (String) request.getAttribute("msg");
+        String userEmail = (String) request.getAttribute("userEmail");
+     %>
+    <div class="exception-nav">
+        <form action="GoHomeController" method="POST">
+            <input type="hidden" value="<%=userEmail%>" name="userEmail">
+            <input type="submit" id="home" value="Home">
+        </form>
+    </div>
     <div class="error-container">
         <div class="main-container">
-            <div class="java">
-                <% String msg = (String) request.getAttribute("msg");
-                    if(msg!=null) out.println(msg); %>
 
-            </div>
-            <a href="./sign-up.jsp">login</a>
+              <h3><%  out.println(msg); %> </h3>
+
         </div>
     </div>
 </body>

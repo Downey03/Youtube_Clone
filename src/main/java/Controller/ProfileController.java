@@ -17,11 +17,17 @@ public class ProfileController extends HttpServlet {
     private static final ServiceInterface serviceInstance = new ServiceImple();
 
     protected void getProfile(HttpServletRequest req, HttpServletResponse resp)  throws ServletException,IOException{
-       String userEmail = req.getParameter("userEmail");
-       req.setAttribute("userEmail",userEmail);
-       req.setAttribute("playLists",serviceInstance.getPlayLists(userEmail));
-       req.setAttribute("videoList",serviceInstance.getVideoList());
-       req.getRequestDispatcher("profile.jsp").forward(req,resp);
+
+        //get input
+        String userEmail = req.getParameter("userEmail");
+
+        //set attribute
+        req.setAttribute("userEmail",userEmail);
+        req.setAttribute("playLists",serviceInstance.getPlayLists(userEmail));
+        req.setAttribute("videoList",serviceInstance.getVideoList());
+
+        //goes to profile
+        req.getRequestDispatcher("profile.jsp").forward(req,resp);
     }
 
     @Override

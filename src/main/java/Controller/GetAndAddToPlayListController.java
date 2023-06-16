@@ -24,11 +24,16 @@ public class GetAndAddToPlayListController extends HttpServlet {
 
     protected void getPlaylist(HttpServletRequest req, HttpServletResponse resp) throws ServletException,IOException {
 
+        //get input
         String userEmail = req.getParameter("userEmail");
         String videoTitle = req.getParameter("videoTitle");
+
+        //set attributes
         req.setAttribute("userEmail",userEmail);
         req.setAttribute("playLists",serviceInstance.getPlayLists(userEmail));
         req.setAttribute("videoTitle",videoTitle);
+
+        //goes to list of playlist
         req.getRequestDispatcher("list-of-playlists.jsp").forward(req,resp);
     }
 

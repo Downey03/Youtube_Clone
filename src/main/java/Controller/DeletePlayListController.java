@@ -16,10 +16,18 @@ public class DeletePlayListController extends HttpServlet {
     private ServiceInterface serviceInstance = new ServiceImple();
 
     protected void deletePlayList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get input
         String userEmail = req.getParameter("userEmail");
         String playListName = req.getParameter("playListName");
+
+        //set attribute
         req.setAttribute("userEmail",userEmail);
+
+        //delete the playlist
         serviceInstance.deletePlayList(playListName,userEmail);
+
+        //goes to profile
         req.getRequestDispatcher("ProfileController").forward(req,resp);
     }
 

@@ -14,25 +14,32 @@
     <div class="signup-container">
         <div class="main-container" id="main-container">
             <div class="back">
-                 <a href="./index.jsp">back<img  src="./resources/images/left-arrow.png" class="left-arrow" alt=""><span>back</span></a>
+                 <a href="./index.jsp"><span>back</span></a>
             </div>
+            <div class="pass-check"><h6 id="pass-check"></h6></div> 
+            <div class="conf-pass"><h6 id="conf-pass"></h6></div>
             <div class="signup-form">
                 <form action="SignUpController" method="POST">
                     <label for="name">Name</label> <br>
-                    <input type="text" name="name" required id="name"> <br>
+                    <input type="text" onkeyup="submitValidate()" name="name" required id="name"> <br>
                     <label for="email">E-mail</label> <br>
-                    <input type="email" name="userEmail" required id="email"> <br>
+                    <input type="email" onkeyup="submitValidate()" name="userEmail" required id="email"> <br>
                     <label for="password">Password</label> <br>
-                    <input type="password" name="password" required id="password">
+                    <input type="password" name="password" onkeyup="check();confirmPassword();submitValidate()" required id="password">
                     <p id="password-toggle" onclick="togglePassword()">show</p>
-                    <input type="submit" id="submit" >
+                    <label for="confirm-password">Confirm Password</label> <br>
+                    <input type="password" name="confirm-password" onkeyup="confirmPassword();submitValidate();" required id="confirm-password">
+                    <button type="submit" class="submit" id="submit" disabled >create</button>
                 </form>
             </div>
-            <div>
-                <div class="hr-content">
-                    <hr><span>OR</span><hr>
+
+            <div class="java">
+                <div>
+                    <div class="hr-content">
+                        <hr><span>OR</span><hr>
+                    </div>
+                    <div id="my-signin2"></div>
                 </div>
-                <div id="my-signin2"></div>
             </div>
         </div>
     </div>
@@ -55,7 +62,43 @@
           });
         }
       </script>
-    
+    <script>
+   
+      
+      let submit = document.getElementById("submit")
+      function check(){
+        let passWarn = document.getElementById("pass-check")  
+        let confPass = document.getElementById("conf-pass")
+        let password = document.getElementById("password").value.toString()
+        document.getElementById("password").value.oldvalue = password
+        if(password.length<8) passWarn.innerText = "Password size must be more than 8"
+        else if(!password.match(/[a-zA-z]/g)) passWarn.innerText = "Password must have a letter"
+        else if(!password.match(/[0-9]/g)) passWarn.innerText = "Password must have a number"
+        else passWarn.innerText = ""
+      }
+   
+      function confirmPassword(){
+        let passWarn = document.getElementById("pass-check")  
+        let confPass = document.getElementById("conf-pass")
+        let password = document.getElementById("password").value.toString()
+        let confPassword = document.getElementById("confirm-password").value.toString()
+
+        document.getElementById("password").value.oldvalue = password;
+        document.getElementById("confirm-password").value.oldvalue = confPassword;
+
+        if(password!=confPassword) confPass.innerText = "Password and Confirm Password must be same"
+        else confPass.innerText = ""
+      }
+   
+      function submitValidate(){
+        let password = document.getElementById("password").value.toString()
+        document.getElementById("password").value.oldvalue = password
+        let passWarn = document.getElementById("pass-check")
+        let confPass = document.getElementById("conf-pass")
+        if(password!="" && passWarn.outerText=="" && confPass.outerText=="") submit.disabled = false;
+        else submit.disabled = true;
+      }
+   </script>
       <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 
     <script src="index-script.js"></script>

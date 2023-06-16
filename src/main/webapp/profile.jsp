@@ -13,7 +13,7 @@
     <body>
        
         <div class="profile-nav">
-            <form action="GoHomeController" method="POST">
+            <form action="GoHomeController" method="POST" prevent>
                 <input type="hidden" value="<%=userEmail%>" name="userEmail">
                 <input type="submit" id="home" value="Home">
             </form>
@@ -47,13 +47,40 @@
                     <hr>
                     <div class="new-playlist">
                         <h3>Create A Playlist:</h3>
-                        <form action=CreateNewPlayListController method="POST">
-                            <input type="text" id="new-playlist" placeholder="Enter Playlist name" name="playListName">
+                        <form action=CreateNewPlayListController id="myForm" method="POST">
+                            <input type="text"  onkeyup="checkValue()" id="new-playlist" placeholder="Enter Playlist name" name="playListName">
                             <input type="hidden" value="<%=userEmail%>" name="userEmail">
-                            <input type="submit" value="Create">
+                            <input type="submit" id="create"value="Create">
                         </form>
                     </div>
                 </div>
             </div>
+            <script >
+
+                  <%-- This script will check if the playlist name has more than 3 letters --%>
+                let createBtn = document.getElementById("create")
+                            function checkValue(){
+                                let newPlayList = document.getElementById("new-playlist").value
+                                document.getElementById("new-playlist").value = newPlayList
+                                if(checkValidString(newPlayList)) createBtn.classList.add("display-block")
+                                else createBtn.classList.remove("display-block")
+                            }
+
+                            function checkValidString(str){
+                                if(str.length<3) return 0
+                                if(!str.match(/[A-Za-z]/g)) return 0
+                                return 1
+                            }
+            </script>
+            <script >
+                  <%-- This script will not let enter key to submit form --%>
+                let input = document.getElementById("new-playlist");
+                      input.addEventListener('keydown', function(e) {
+                        if (e.keyCode === 13) {
+                          e.preventDefault();
+                        }
+                      });
+
+            </script>
     </body>
 </html>

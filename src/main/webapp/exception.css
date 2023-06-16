@@ -1,11 +1,36 @@
+.exception-nav{
+    display:flex;
+    justify-content: space-between;
+    padding: 10px 50px;
+    background-color: #FF0000;
+}
+
+#home{
+    width: 120%;
+    height: 30px;
+    font-weight: 500;
+    font-size: 16;
+    border: transparent;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+#home:hover{
+    transition: 0.2s;
+    color: azure;
+    background-color: rgb(77,77,77);
+}
+
+.error-container{
+    background-color: rgb(77,77,77);
+    height: 100vh;
+    padding: 20px;
+}
+
 .main-container{
     width: 50%;
     margin: auto;
-    background-color: aquamarine;
-}
-
-.main-container a{
-    left: 45%;
-    position: relative;
-    text-decoration: none;
+    padding: 20px;
+    background-color:azure;
+    border-radius: 10px;
 }

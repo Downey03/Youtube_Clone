@@ -8,3 +8,12 @@
 .java{
     display: none;
 }
+
+.display-none{
+    transition: all 1s;
+    display: none !important; 
+}
+
+.display-block{
+    display: inline-block !important;
+}

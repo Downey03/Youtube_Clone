@@ -16,6 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="home.css">
     <link rel="stylesheet" href="global-styles.css">
+    <title>home</title>
 </head>
 <body>
     
@@ -67,7 +68,7 @@
                                 <form action="GetAndAddToPlayListController" method="POST" >
                                     <input type="hidden" value="<%=video.getTitle()%>" name="videoTitle">
                                     <input type="hidden" value="<%=userEmail%>" name="userEmail">
-                                    <td><a href="<%=video.getTitle()%>"><%=video.getTitle()%></a></td>
+                                    <td><a target="_blank" href="<%=video.getLink()%>"><%=video.getTitle()%></a></td>
                                     <td><button type="submit" >Add To PlayList</button></td>
                                 </form>
                             </tr>

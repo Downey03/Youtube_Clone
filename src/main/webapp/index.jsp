@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="global-styles.css">
 </head>
 <body>
+    <div class="java"><% request.getSession().invalidate(); %> </div>
     <div class="index-container">
         <div class="main-container" id="main-container">
             <svg class="external-icon"  viewBox="0 0 90 20" focusable="false" style="pointer-events: none; display: block; width: 50%; height: 50%;">

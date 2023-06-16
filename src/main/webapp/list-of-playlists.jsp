@@ -43,14 +43,40 @@
                      <h3>Create A New Playlist :</h3>
                     <div class="new-playlist">
                         <form action=CreatePlayListAndAddVideoController method="POST">
-                            <input type="text" id="new-playlist" placeholder="Enter Playlist name" name="playListName">
-                             <input type="hidden" value="<%=userEmail%>" name="userEmail">
+                            <input type="text" onkeyup="checkValue()" id="new-playlist" placeholder="Enter Playlist name" name="playListName">
+                             <input type="hidden"  value="<%=userEmail%>" name="userEmail">
                             <input type="hidden" value="<%=videoTitle%>" name="videoTitle">
-                            <input type="submit" value="Create">
+                            <input type="submit" id="create" value="Create">
                         </form>
                     </div>
 
             </div>
         </div>
+        <script >
+            <%-- This script will check if the playList name has more than 3 letters --%>
+            let createBtn = document.getElementById("create")
+            function checkValue(){
+                let newPlayList = document.getElementById("new-playlist").value
+                document.getElementById("new-playlist").value = newPlayList
+                if(checkValidString(newPlayList)) createBtn.classList.add("display-block")
+                else createBtn.classList.remove("display-block")
+            }
+
+            function checkValidString(str){
+                if(str.length<3) return 0
+                if(!str.match(/[A-Za-z]/g)) return 0
+                return 1
+            }
+        </script>
+
+        <script>
+             <%-- This script will not let enter key to submit form --%>
+                const input = document.getElementById("new-playlist");
+                      input.addEventListener('keydown', function(e) {
+                        if (e.keyCode === 13) {
+                          e.preventDefault();
+                        }
+                      });
+        </script>
     </body>
 </html>

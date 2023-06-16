@@ -19,12 +19,20 @@ public class DeleteVideoFromPlayList extends HttpServlet {
     }
 
     protected void deleteVideo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        //get input
         String userEmail = req.getParameter("userEmail");
         String playListName = req.getParameter("playListName");
         String videoTitle = req.getParameter("videoTitle");
+
+        //delete video
         serviceInstance.deleteVideo(userEmail,playListName,videoTitle);
+
+        //set attributes
         req.setAttribute("userEmail",userEmail);
         req.setAttribute("playListName",playListName);
+
+        //goes to playlist items
         req.getRequestDispatcher("ShowPlayListItemsController").forward(req,resp);
     }
 
